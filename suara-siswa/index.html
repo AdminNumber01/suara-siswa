@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light" style="color-scheme: light;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suara Siswa – Sistem Aspirasi OSIS</title>
+<meta name="description" content="Sampaikan keluhan, ide, atau usulanmu untuk sekolah. Boleh tanpa nama. OSIS membahasnya tiap bulan dan mengumumkan hasilnya secara terbuka.">
+<meta property="og:title" content="Suara Siswa – Sampaikan Aspirasimu">
+<meta property="og:description" content="Boleh anonim. Dibahas OSIS dan pembina tiap bulan. Hasilnya diumumkan terbuka.">
+<meta name="theme-color" content="#2347E8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📣</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=Figtree:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F7FB;--surface:#fff;--ink:#14161F;--muted:#585D70;--line:#DDE0EC;--blue:#2347E8;--blue-ink:#fff;--sun:#FFC93C;--sun-ink:#14161F;--ok:#12805C;--wip:#B26A00;--fwd:#2347E8;--no:#B3261E;
+--display:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Figtree","Segoe UI",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10121A;--surface:#1A1D29;--ink:#EEF0F8;--muted:#A3A8BD;--line:#2D3144;--blue:#7C93FF;--blue-ink:#10121A;--ok:#4CD1A0;--wip:#F2B35A;--fwd:#7C93FF;--no:#FF8A80}}
+:root[data-theme="dark"]{--bg:#10121A;--surface:#1A1D29;--ink:#EEF0F8;--muted:#A3A8BD;--line:#2D3144;--blue:#7C93FF;--blue-ink:#10121A;--ok:#4CD1A0;--wip:#F2B35A;--fwd:#7C93FF;--no:#FF8A80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{font:800 1.3rem var(--display);letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;padding:36px 0 64px;align-items:start}
+h1{font:800 clamp(2.4rem,6vw,4.2rem)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 18px}
+h1 mark{background:var(--sun);color:var(--sun-ink);padding:0 .12em;border-radius:6px}
+.lead{max-width:34rem;color:var(--muted);font-size:1.15rem}
+.form{background:var(--surface);border:2px solid var(--ink);border-radius:20px 20px 20px 4px;padding:26px;box-shadow:8px 8px 0 var(--sun)}
+.form h2{font:700 1.35rem var(--display);margin:0 0 16px}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px}
+textarea{min-height:130px;resize:vertical}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin-top:16px}
+.chk input{width:auto;margin-top:6px}
+button,.btn{font:700 1rem var(--body);background:var(--blue);color:var(--blue-ink);border:0;border-radius:10px;padding:12px 20px;cursor:pointer;margin-top:18px}
+button.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-top:0}
+.msg{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1.5px solid var(--line)}
+.msg b{font-family:var(--display);font-size:1.25rem;letter-spacing:.04em}
+.err{color:var(--no);font-weight:600;margin-top:10px;min-height:1.4em}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2.s{font:800 clamp(1.7rem,4vw,2.4rem)/1.1 var(--display);letter-spacing:-.025em;margin:0 0 10px}
+.sub{color:var(--muted);max-width:40rem;margin:0 0 28px}
+.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.steps li{counter-increment:s;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font:800 1rem var(--display);margin-bottom:10px}
+.steps b{display:block;font-family:var(--display);margin-bottom:4px}
+.steps span{font-size:.95rem;color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tabs button{margin:0;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);padding:8px 14px;border-radius:999px;font-weight:600}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list{display:grid;gap:12px}
+.item{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
+.item .meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:6px}
+.pill{font-weight:700;font-size:.85rem;padding:2px 10px;border-radius:999px;border:1.5px solid currentColor}
+.s-diterima{color:var(--ok)}.s-dibahas{color:var(--wip)}.s-diteruskan{color:var(--fwd)}.s-belum{color:var(--no)}
+.reason{margin-top:8px;padding-left:12px;border-left:3px solid var(--line);color:var(--muted);font-size:.95rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px}
+.card h3{font:700 1.1rem var(--display);margin:0 0 14px}
+.bar{display:grid;grid-template-columns:110px 1fr 32px;gap:10px;align-items:center;margin:9px 0;font-size:.95rem}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--blue);min-width:4px}
+.promise{background:var(--ink);color:var(--bg);border-radius:20px;padding:32px}
+.promise h2{color:var(--bg)}.promise p{max-width:44rem;margin:0 0 10px}
+footer{padding:30px 0 50px;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line)}
+.scroll{overflow-x:auto}
+@media(max-width:860px){.hero,.stats{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}nav a{margin-left:14px}}
+@media(max-width:520px){nav a[href="#alur"],nav a[href="#faq"]{display:none}.steps{grid-template-columns:1fr}.bar{grid-template-columns:90px 1fr 28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.btn{display:inline-block;text-decoration:none;margin-top:6px}
+.adm{background:var(--surface);border:2px solid var(--ink);border-radius:16px;padding:22px}
+.adm .row{display:grid;gap:8px;margin:10px 0}
+.adm .it{border:1.5px solid var(--line);border-radius:12px;padding:14px;margin:12px 0;background:var(--bg)}
+.adm .acts{display:flex;gap:8px;flex-wrap:wrap}
+.adm .acts button{margin-top:8px}
+.adm textarea{min-height:70px}
+.adm .raw{color:var(--muted);font-size:.92rem;margin:0 0 8px}
+.ok2{color:var(--ok);font-weight:600}
+header.top{flex-wrap:wrap;gap:8px}
+.trust{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.trust li{font-weight:600;font-size:.92rem;padding:6px 12px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line)}
+.faq details{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 18px;margin:10px 0}
+.faq summary{font:700 1.05rem var(--display);cursor:pointer}
+.faq p{margin:10px 0 0;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="#">Suara Siswa</a>
+  <nav><a href="#alur">Alur</a><a href="#papan">Papan aspirasi</a><a href="#laporan">Laporan</a><a href="#faq">Tanya jawab</a><a href="#admin" id="navadm" hidden="">Pengurus</a></nav>
+</header>
+
+<div class="hero" id="kirim">
+  <div>
+    <h1>Ada yang mengganjal di sekolah? <mark>Sampaikan.</mark></h1>
+    <p class="lead">Keluhan, ide, kritik, atau usulan — semua boleh masuk, dan boleh tanpa nama. OSIS membacanya, membahasnya bersama pembina, lalu mengumumkan hasilnya di sini.</p>
+    <ul class="trust"><li>Boleh anonim</li><li>Dibahas tiap bulan</li><li>Hasil diumumkan terbuka</li></ul>
+  </div>
+  <div class="form">
+    <h2>Sampaikan aspirasimu</h2>
+    <p><b>Lewat formulir digital.</b> Pilih kategori, tulis isinya, dan kosongkan nama kalau mau anonim.</p>
+    <div id="formbox"></div>
+    <p style="margin-top:18px"><b>Langsung.</b> Temui pengurus OSIS atau masukkan kertas ke kotak aspirasi. Isinya diperlakukan sama seperti kiriman digital.</p>
+  </div>
+</div>
+
+<section id="alur">
+  <h2 class="s">Dari kotak masuk sampai pengumuman</h2>
+  <p class="sub">Setiap aspirasi melewati lima langkah yang sama.</p>
+  <ol class="steps">
+    <li><b>Masuk</b><span>Lewat formulir atau penyampaian langsung.</span></li>
+    <li><b>Dibuka tiap bulan</b><span>Pengurus membuka semua aspirasi yang terkumpul.</span></li>
+    <li><b>Dikelompokkan</b><span>Fasilitas, pembelajaran, kegiatan, kedisiplinan, lainnya.</span></li>
+    <li><b>Dibahas</b><span>Bersama pengurus dan pembina OSIS.</span></li>
+    <li><b>Diumumkan</b><span>Status dan alasannya tampil di papan aspirasi.</span></li>
+  </ol>
+</section>
+
+<section id="papan">
+  <h2 class="s">Papan aspirasi</h2>
+  <p class="sub">Aspirasi yang sudah dibahas, lengkap dengan statusnya. Nama pengirim tidak pernah ditampilkan.</p>
+  <div class="tabs" id="tabs" role="group" aria-label="Filter status"></div>
+  <input id="q" placeholder="Cari kata kunci atau kode, misalnya SS-004" aria-label="Cari aspirasi" style="margin-bottom:16px">
+  <div class="list" id="list"></div>
+</section>
+
+<section id="laporan">
+  <h2 class="s">Laporan bulanan</h2>
+  <p class="sub">Dihitung dari papan aspirasi. Dua hal yang kami jaga: berapa aspirasi yang ditindaklanjuti, dan alasan untuk yang belum bisa.</p>
+  <div class="stats">
+    <div class="card"><h3>Status aspirasi</h3><div id="bs"></div></div>
+    <div class="card"><h3>Kategori</h3><div id="bk"></div></div>
+  </div>
+  <p class="sub" style="margin:20px 0 0" id="rate"></p>
+</section>
+
+<section id="admin" hidden="">
+  <h2 class="s">Panel pengurus</h2>
+  <p class="sub">Hanya terlihat oleh pengurus yang ditambahkan sebagai Editor. Aspirasi mentah di sini tidak tampil di papan sebelum kamu menerbitkannya.</p>
+  <div class="adm">
+    <h3 style="margin:0 0 6px">1. Tautan formulir</h3>
+    <div class="row"><input id="furl" placeholder="https://forms.gle/..." aria-label="Tautan formulir"></div>
+    <h3 style="margin:18px 0 6px">2. Tambah aspirasi dari formulir atau kotak</h3>
+    <p class="raw">Satu aspirasi per baris. Kalau menempel dari Google Sheet dengan kolom kategori lalu isi, kategorinya terbaca otomatis.</p>
+    <div class="row"><select id="akat"></select><textarea id="aisi" aria-label="Isi aspirasi"></textarea></div>
+    <button type="button" id="atambah">Tambah ke daftar</button>
+    <h3 style="margin:22px 0 4px">3. Bahas dan beri status <span id="pend" class="raw"></span></h3>
+    <div id="inbox"></div>
+    <h3 style="margin:22px 0 6px">4. Terbitkan</h3>
+    <p class="raw">Simpan dulu tiap aspirasi. Yang berstatus selain “Baru” akan tampil di papan.</p>
+    <button type="button" id="terbit">Terbitkan ke papan</button>
+    <div class="msg" id="amsg" hidden=""></div>
+  </div>
+</section>
+
+<section id="janji">
+  <div class="promise">
+    <h2 class="s">Yang kami janjikan</h2>
+    <p>Kami tidak menjanjikan semua aspirasi bisa dikabulkan. Ada yang terbentur anggaran, aturan, atau waktu.</p>
+    <p>Yang kami janjikan: setiap aspirasi yang layak diproses dengan bertanggung jawab. Dibaca, dibahas, dan diumumkan statusnya. Kalau belum bisa dilaksanakan, alasannya kami tulis di papan aspirasi.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <h2 class="s">Tanya jawab</h2>
+  <details><summary>Apakah aku harus menulis nama?</summary><p>Tidak. Nama dan kelas boleh dikosongkan. Nama pengirim juga tidak pernah ditampilkan di papan aspirasi.</p></details>
+  <details><summary>Siapa yang membaca aspirasiku?</summary><p>Pengurus OSIS membuka semua aspirasi yang terkumpul tiap bulan, lalu membahasnya bersama pembina OSIS.</p></details>
+  <details><summary>Kapan aku tahu hasilnya?</summary><p>Setelah pembahasan bulanan, statusnya muncul di papan aspirasi: diterima, sedang dibahas, diteruskan, atau belum dapat dilaksanakan beserta alasannya.</p></details>
+  <details><summary>Apa arti “Diteruskan”?</summary><p>OSIS tidak bisa memutuskannya sendiri, jadi aspirasi itu diteruskan ke pihak yang berwenang.</p></details>
+  <details><summary>Aspirasi seperti apa yang tidak diproses?</summary><p>Yang berisi ancaman atau menyerang pribadi tertentu. Kritik terhadap fasilitas, pembelajaran, kegiatan, atau aturan tetap diterima.</p></details>
+  <details><summary>Boleh kirim lebih dari satu kali?</summary><p>Boleh. Kirim sebanyak yang kamu mau, satu hal per aspirasi.</p></details>
+</section>
+
+<footer>Suara Siswa adalah program OSIS. Aspirasi yang berisi ancaman atau menyerang pribadi tertentu tidak diproses sebagai aspirasi.</footer>
+</div>
+
+<script>
+var SRC="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+var BOARD=/*B*/[]/*E*/;
+var FORM_URL=/*U*/"https://forms.gle/Zh1BeHGgrCrQNRdW7"/*V*/;
+var ST={diterima:"Diterima",dibahas:"Sedang dibahas",diteruskan:"Diteruskan",belum:"Belum dapat dilaksanakan"};
+var KAT=["Fasilitas","Pembelajaran","Kegiatan","Kedisiplinan","Lainnya"];
+var flt="semua",qq="",inbox=[],db=null,formUrl=FORM_URL;
+function $(i){return document.getElementById(i)}
+function esc(x){var d=document.createElement("div");d.textContent=x;return d.innerHTML}
+function opts(o,sel){return Object.keys(o).map(function(k){return '<option value="'+k+'"'+(k==sel?" selected":"")+'>'+o[k]+'</option>'}).join("")}
+
+function form(){
+  $("formbox").innerHTML=FORM_URL?'<a class="btn" style="background:var(--blue);color:var(--blue-ink);padding:12px 20px;border-radius:10px;font-weight:700" href="'+esc(FORM_URL)+'" target="_blank" rel="noopener">Isi formulir aspirasi</a>':'<div class="msg">Formulir belum diaktifkan. Sementara, sampaikan langsung ke pengurus OSIS.</div>';
+}
+function tabs(){
+  var h='<button type="button" aria-pressed="'+(flt=="semua")+'" data-f="semua">Semua</button>';
+  for(var k in ST)h+='<button type="button" aria-pressed="'+(flt==k)+'" data-f="'+k+'">'+ST[k]+'</button>';
+  $("tabs").innerHTML=h;
+}
+function list(){
+  var a=BOARD.filter(function(x){return (flt=="semua"||x.s==flt)&&(!qq||(x.t+" "+x.id+" "+x.k).toLowerCase().indexOf(qq)>-1)});
+  $("list").innerHTML=a.length?a.map(function(x){
+    return '<article class="item"><div class="meta"><span class="pill s-'+x.s+'">'+ST[x.s]+'</span><span>'+esc(x.k)+'</span><span>'+esc(x.id)+'</span><span>'+esc(x.d||"")+'</span></div><div>'+esc(x.t)+'</div>'+(x.r?'<div class="reason">'+esc(x.r)+'</div>':'')+'</article>';
+  }).join(""):'<div class="item">'+(BOARD.length?'Tidak ada aspirasi yang cocok.':'Belum ada aspirasi yang diumumkan. Pengurus menerbitkan papan setelah rapat bulanan.')+'</div>';
+}
+function bars(el,rows,max){
+  $(el).innerHTML=rows.map(function(r){return '<div class="bar"><span>'+r[0]+'</span><i style="width:'+(max?Math.round(r[1]/max*100):0)+'%"></i><b>'+r[1]+'</b></div>'}).join("");
+}
+function report(){
+  var c={},k={};
+  BOARD.forEach(function(x){c[x.s]=(c[x.s]||0)+1;k[x.k]=(k[x.k]||0)+1});
+  var sr=Object.keys(ST).map(function(s){return [ST[s],c[s]||0]}),kr=KAT.map(function(x){return [x,k[x]||0]});
+  var m=Math.max.apply(null,sr.concat(kr).map(function(r){return r[1]}));
+  bars("bs",sr,m);bars("bk",kr,m);
+  $("rate").textContent=BOARD.length?BOARD.length+" aspirasi sudah diputuskan. "+((c.diterima||0)+(c.diteruskan||0))+" ditindaklanjuti, "+(c.belum||0)+" belum bisa dengan alasan tercatat.":"Belum ada data. Laporan terisi setelah papan pertama diterbitkan.";
+}
+function render(){form();tabs();list();report()}
+$("tabs").addEventListener("click",function(e){var b=e.target.closest("button");if(b){flt=b.dataset.f;tabs();list()}});
+$("q").addEventListener("input",function(e){qq=e.target.value.trim().toLowerCase();list()});
+
+/* ---- panel pengurus ---- */
+var SA={baru:"Baru"};for(var z in ST)SA[z]=ST[z];
+function say(t,ok){var m=$("amsg");m.hidden=false;m.className="msg"+(ok?" ok2":"");m.textContent=t}
+function nextNum(){var n=0;inbox.concat(BOARD).forEach(function(x){var v=parseInt(String(x.id).replace(/\D/g,""),10);if(v>n)n=v});return n}
+function adminRender(){
+  var pend=inbox.filter(function(x){return x.s=="baru"}).length;
+  $("pend").textContent=pend?"("+pend+" menunggu dibaca)":"";
+  $("inbox").innerHTML=inbox.length?inbox.map(function(x,i){
+    return '<div class="it" data-i="'+i+'"><div class="meta" style="display:flex;gap:10px;color:var(--muted);font-size:.9rem"><b>'+esc(x.id)+'</b><span>'+esc(x.k)+'</span></div><p class="raw">Asli: '+esc(x.t)+'</p>'
+    +'<label>Status</label><select class="fs">'+opts(SA,x.s)+'</select>'
+    +'<label>Teks di papan (ringkas dan tanpa nama)</label><textarea class="fm">'+esc(x.sum||x.t)+'</textarea>'
+    +'<label>Alasan atau tindak lanjut</label><textarea class="fr">'+esc(x.r||"")+'</textarea>'
+    +'<div class="acts"><button type="button" class="sv">Simpan</button><button type="button" class="alt dl">Hapus</button></div></div>';
+  }).join(""):'<p class="raw">Belum ada aspirasi di daftar.</p>';
+}
+async function initAdmin(){
+  try{
+    var u=await claude.use("user");if(!u||!(await u.canEdit()))return;
+    db=await claude.use("db");if(!db)return;
+  }catch(e){return}
+  $("admin").hidden=false;$("navadm").hidden=false;$("furl").value=FORM_URL;
+  $("akat").innerHTML=KAT.map(function(k){return '<option>'+k+'</option>'}).join("");
+  db.collection("inbox").orderBy("c","asc").onSnapshot(function(s){inbox=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});adminRender()},function(){say("Daftar aspirasi tidak bisa dimuat.")});
+}
+$("atambah").addEventListener("click",async function(){
+  if(!db)return;
+  var sel=$("akat").value,lines=$("aisi").value.split("\n").map(function(l){return l.trim()}).filter(Boolean);
+  if(!lines.length){say("Tulis minimal satu aspirasi.");return}
+  var n=nextNum();
+  try{
+    for(var i=0;i<lines.length;i++){
+      var p=lines[i].split("\t"),k=sel,t=lines[i];
+      if(p.length>1){var f=KAT.filter(function(x){return x.toLowerCase()==p[0].trim().toLowerCase()})[0];if(f){k=f;t=p.slice(1).join(" ").trim()}}
+      n++;var id="SS-"+String(n).padStart(3,"0");
+      await db.collection("inbox").doc(id).set({k:k,t:t,s:"baru",sum:"",r:"",c:Date.now()});
+    }
+    $("aisi").value="";say(lines.length+" aspirasi ditambahkan.",true);
+  }catch(e){say("Gagal menambah. Coba lagi.")}
+});
+$("inbox").addEventListener("click",async function(e){
+  var b=e.target.closest("button"),it=e.target.closest(".it");if(!b||!it||!db)return;
+  var x=inbox[+it.dataset.i],ref=db.collection("inbox").doc(x.id);
+  try{
+    if(b.classList.contains("sv")){
+      await ref.update({s:it.querySelector(".fs").value,sum:it.querySelector(".fm").value.trim(),r:it.querySelector(".fr").value.trim(),d:new Date().toISOString().slice(0,10)});
+      say(x.id+" disimpan.",true);
+    }else if(b.classList.contains("dl")){
+      if(b.dataset.sure){await ref.delete();say(x.id+" dihapus.",true)}else{b.dataset.sure=1;b.textContent="Yakin hapus?"}
+    }
+  }catch(err){say("Gagal menyimpan. Coba lagi.")}
+});
+function build(board,url){
+  var j=JSON.stringify(board).replace(/</g,"\\u003c"),u=JSON.stringify(url).replace(/</g,"\\u003c");
+  var B="/*"+"B*/",E="/*"+"E*/",U="/*"+"U*/",V="/*"+"V*/";
+  var rb=new RegExp(B.replace(/[*\/]/g,"\\$&")+"[\\s\\S]*?"+E.replace(/[*\/]/g,"\\$&"));
+  var ru=new RegExp(U.replace(/[*\/]/g,"\\$&")+"[\\s\\S]*?"+V.replace(/[*\/]/g,"\\$&"));
+  return SRC.replace(rb,function(){return B+j+E}).replace(ru,function(){return U+u+V});
+}
+$("terbit").addEventListener("click",async function(){
+  var url=$("furl").value.trim();
+  if(url&&url.indexOf("https://")!=0){say("Tautan formulir harus diawali https://");return}
+  var board=inbox.filter(function(x){return x.s!="baru"}).map(function(x){return {id:x.id,k:x.k,t:x.sum||x.t,s:x.s,r:x.r||"",d:x.d||""}});
+  try{
+    var a=await claude.use("artifact");
+    await a.publish(build(board,url));
+  }catch(e){say(e&&e.code=="not_writer"||e&&e.code=="not_granted"?"Akunmu tidak punya izin menerbitkan. Minta jadi Editor.":"Penerbitan gagal. Coba lagi.")}
+});
+render();initAdmin();
+</script></body></html>
